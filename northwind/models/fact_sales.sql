@@ -10,7 +10,7 @@ with stg_orders as (
 stg_order_details as (
     select 
         OrderID,
-        productid,
+        {{ dbt_utils.generate_surrogate_key(['productid']) }} as productkey,
         quantity,
         unitprice,
         discount
@@ -19,13 +19,13 @@ stg_order_details as (
 
 stg_products as (
     select 
-        productid 
+        {{ dbt_utils.generate_surrogate_key(['productid']) }} as productkey, 
     from {{ source('northwind', 'Products') }}
 )
 select 
     o.customerkey,
     o.orderdatekey,
-    p.productid as Productkey,
+    p.productkey,
     o.orderid,
     od.quantity,
     od.quantity * od.unitprice as extendedpriceamount,
@@ -33,4 +33,4 @@ select
     od.quantity * od.unitprice * (1 - od.discount) as soldamount
 from stg_orders o
     join stg_order_details od on o.orderid = od.orderid
-    join stg_products p on od.productid = p.productid
+    join stg_products p on od.productkey = p.productkey
