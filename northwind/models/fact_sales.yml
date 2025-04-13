@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: Transaction. One row per product item ordered. Used to track sales of product.
+    columns:
+      - name: customerkey
+        description: Dimension FK for dim_customer.
+      - name: orderdatekey
+        description: Dimension FK for dim_date.
+      - name: productkey
+        description: Dimension FK for dim_product.
+      - name: orderid
+        description: Source key used for drill-through.
+        tests:
+          - not_null
+          - unique
+      - name: quantity
+        description: Total number of products ordered.
+      - name: extendedpriceamount
+        description: Total price before discount.
+      - name: discountamount
+        description: Discount applied.
+      - name: soldamount
+        description: Final amount after discount.
