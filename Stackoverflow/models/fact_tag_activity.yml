@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: fact_tag_activity
+    description: Tag activity fact table. One row per post-tag combination tracking engagement activity.
+    columns:
+      - name: postid
+        description: The identifier for the post associated with the tag.
+        tests:
+            - unique
+            - not_null
+      - name: tagid
+        description: The identifier for the tag associated with the post.
+        tests:
+            - unique
+            - not_null
+      - name: tag_count
+        description: The total number of times the tag has been applied to posts.
+      - name: views
+        description: Total number of views for posts associated with the tag.
+      - name: votes
+        description: Total number of votes received by posts associated with the tag.
+      - name: comments
+        description: Total number of comments on posts associated with the tag.
+      - name: tag_activity_timestamp
+        description: The timestamp of when the tag activity (such as tagging or interaction) was logged.
+      - name: post_creation_date
+        description: The creation date of the post associated with the tag.
+      - name: last_activity_date
+        description: The last activity date for the post associated with the tag.
+      - name: tag_type
+        description: The type of the tag (e.g., "bug", "feature-request").
