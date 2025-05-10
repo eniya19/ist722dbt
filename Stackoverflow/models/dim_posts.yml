@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: dim_post
+    description: Post Dimension. One row per post.
+    columns:
+      - name: postkey
+        description: The surrogate key of the post.
+        tests:
+          - not_null
+          - unique
+      - name: post_id
+        description: The business / source key of the post (_Id).
+        tests:
+          - not_null
+          - unique
+      - name: post_type_id
+        description: The type of the post (e.g., Question, Answer).
+      - name: creation_date
+        description: The date and time when the post was created.
+      - name: score
+        description: The score of the post.
+      - name: view_count
+        description: The number of views the post has received.
+      - name: body
+        description: The body content of the post.
+      - name: owner_user_id
+        description: The ID of the user who created the post.
+      - name: last_editor_user_id
+        description: The ID of the user who last edited the post.
+      - name: last_edit_date
+        description: The date and time when the post was last edited.
+      - name: last_activity_date
+        description: The date and time when the post was last active.
+      - name: answer_count
+        description: The number of answers to the post.
+      - name: comment_count
+        description: The number of comments on the post.
+      - name: content_license
+        description: The content license of the post.
+      - name: accepted_answer_id
+        description: The ID of the accepted answer, if applicable.
+      - name: favorite_count
+        description: The number of times the post has been marked as a favorite.
+      - name: owner_display_name
+        description: The display name of the post owner.
+      - name: closed_date
+        description: The date when the post was closed, if applicable.
+      - name: community_owned_date
+        description: The date when the post became community-owned, if applicable.
+      - name: parent_id
+        description: The ID of the parent post, if this is a comment or answer.
+      - name: last_editor_display_name
+        description: The display name of the user who last edited the post.

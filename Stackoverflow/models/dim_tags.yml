@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: dim_tag
+    description: Tag Dimension. One row per tag.
+    columns:
+      - name: tagkey
+        description: The surrogate key of the tag.
+        tests:
+          - not_null
+          - unique
+      - name: tag_id
+        description: The business / source key of the tag (_Id).
+        tests:
+          - not_null
+          - unique
+      - name: tag_name
+        description: The name of the tag (_TagName).
+      - name: count
+        description: The number of times the tag has been applied (_Count).
+      - name: is_required
+        description: Indicates if the tag is required (_IsRequired).
+      - name: is_moderator_only
+        description: Indicates if the tag is only for moderators (_IsModeratorOnly).
+      - name: excerpt_post_id
+        description: The ID of the post associated with the tag's excerpt (_ExcerptPostId).
+      - name: wiki_post_id

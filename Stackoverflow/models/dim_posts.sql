@@ -1,0 +1,6 @@
+with stg_posts as (
+    select * from {{ source('stackoverflow', 'posts') }}
+)
+select  {{ dbt_utils.generate_surrogate_key(['stg_posts._Id']) }} as postkey, 
+    stg_posts.* 
+from stg_posts

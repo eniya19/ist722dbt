@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: dim_user
+    description: User Dimension. One row per user.
+    columns:
+      - name: userkey
+        description: The surrogate key of the user.
+      - name: user_id
+        description: The business / source key of the user (_Id).
+      - name: display_name
+        description: The display name of the user (_DisplayName).
+        tests:
+          - not_null
+      - name: reputation
+        description: The reputation score of the user (_Reputation).
+      - name: location
+        description: The location of the user (_Location).
+      - name: about_me
+        description: The "about me" information for the user (_AboutMe).
+      - name: views
+        description: The number of views the user has received (_Views).
+      - name: upvotes
+        description: The number of upvotes the user has received (_UpVotes).
+      - name: downvotes
+        description: The number of downvotes the user has received (_DownVotes).
+      - name: account_id
+        description: The account ID of the user (_AccountId).
+      - name: website_url
+        description: The website URL of the user (_WebsiteUrl).
+      - name: creation_date
+        description: The account creation date of the user (_CreationDate).
+        tests:
+          - not_null
+      - name: last_access_date
+        description: The last access date of the user (_LastAccessDate).
